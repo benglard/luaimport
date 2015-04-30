@@ -5,8 +5,7 @@ luaimport presents (what I think is) an interesting method for handling the crea
 To use luaimport, follow these steps:
 * ```require 'luaimport'```
 * Create a table (local or global both work) to store your package, e.g. ```lib = {}```
-* Call ```package``` with a single string argument, the name of the package table, e.g. ```package 'lib'```
-* Call ```import``` with a single string argument, the name of the file, e.g. ```import 'libfilename'```
+* Call ```Package``` with a single string or table argument corresponding to those file(s) that will be imported into the package
 * (optional) return the package, e.g. ```return lib```
 
 ## Example Usage
@@ -22,22 +21,16 @@ return {
 ```lua
 -- testlib.lua
 require 'luaimport'
-testlib = {}
-package 'testlib'
-import 'testfile'
+local testlib = Package 'testlib'
 return testlib
 ```
 
-You can also import many files at once by passing in a single table argument to ```import```, like so:
-
 ```lua
+-- init.lua
 require 'luaimport'
-local lib = {}
-package 'lib'
-import {
- 'libfile1',
- 'libfile2',
- 'libfile3'
+lib = Package {
+    'libfile1',
+    'libfile2',
+    'libfile3'
 }
-return lib
 ```

@@ -1,11 +1,8 @@
 require '../../luaimport'
 
-lib = {}
-package 'lib'
-import {
-   'libfile1',
-   'libfile2',
-   'libfile3'
+lib = Package {
+    'libfile1',
+    'libfile2',
+    'libfile3'
 }
-
 return lib

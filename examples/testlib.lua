@@ -1,5 +1,3 @@
 require '../luaimport'
-local testlib = {}
-package 'testlib'
-import 'testfile'
+local testlib = Package 'testfile'
 return testlib
