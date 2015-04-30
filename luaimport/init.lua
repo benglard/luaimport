@@ -1,6 +1,6 @@
 require 'paths'
 
-Package = function(files)
+Package = function(files, dest)
    if type(files) == 'string' then files = {files} end
 
    local source = debug.getinfo(2).source
@@ -8,7 +8,7 @@ Package = function(files)
    else source = paths.concat(source:sub(2)):match('(.*/)')
    end
 
-   local rv = {}
+   local rv = dest or {}
    for idx, item in pairs(files) do
       local path = string.format('%s%s.lua', source, item)
       local file = dofile(path)
